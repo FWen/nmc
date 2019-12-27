@@ -50,7 +50,7 @@ title('Partial observation (50%)');
 [X_l1, out]  = lq_pgd_mc(1, Y, P, 10, X, zeros(size(Y)));
 relerr = norm(X_l1-X,'fro')/norm(X,'fro');
 
-figure(1); subplot(1,3,2);
+figure(2); subplot(1,3,2);
 imshow(uint8(X_l1));
 title(sprintf('Soft-PGD (RelErr=%.5f, PSNR=%.2f dB)', relerr, psnr(X, X_l1)));
 
@@ -59,6 +59,6 @@ title(sprintf('Soft-PGD (RelErr=%.5f, PSNR=%.2f dB)', relerr, psnr(X, X_l1)));
 [X_lq,~]    = lq_pgd_mc(0.1, Y, P, 1e3, X, X_l1);
 relerr = norm(X_lq-X,'fro')/norm(X,'fro');
 
-figure(2);subplot(1,3,3);
+figure(2); subplot(1,3,3);
 imshow(uint8(X_lq));
 title(sprintf('Lq-PGD (RelErr=%.5f, PSNR=%.2f dB)', relerr, psnr(X, X_lq)));
